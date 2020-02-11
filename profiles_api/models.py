@@ -29,6 +29,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Database model for users in the system"""
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -40,6 +41,10 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def get_full_name(self):
         """Retrieve full name of user"""
         return self.name
+
+    def get_last_name(self):
+        """Retrieve last name of user"""
+        return self.last_name
 
     def get_short_name(self):
         """Retrieve short name of user"""
